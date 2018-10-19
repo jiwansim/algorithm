@@ -38,3 +38,5 @@ public class Scale {
 		System.out.println(output);
 	}
 }
+
+//10554967	pp22shj	2920	맞았습니다!!	11380	112	Java / 수정	738	
