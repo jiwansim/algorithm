@@ -34,3 +34,5 @@ public class GcmAndGcd {
 		return gcd(j, i % j);
 	}
 }
+
+//10554993	pp22shj	2609	맞았습니다!!	11348	104	Java / 수정	703	10초 전
