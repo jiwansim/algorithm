@@ -31,57 +31,26 @@ public class Pibonacci {
 	 *  ==> 1은 2번 출력되고, 0은 1번 출력된다. N이 주어졌을 때, 
 	 *  fibonacci(N)을 호출했을 때, 0과 1이 각각 몇 번 출력되는지 구하는 프로그램을 작성하시오.
 	 */
-
-	static int count0 = 0;
-	static int count1 = 0;
-	static int[][] dp = new int[41][3];
 	
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception, IOException {
-		int t = 0;
-		int n = 0;
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int [][] ff = new int[41][2];
+		ff[0][0] = 1;
+		ff[1][1] = 1;
 		
-		for(int i = 0; i < dp.length; i++) {
-			for(int j = 0; j < dp[0].length; j++) {
-				dp[i][j] = -1;
+		for(int i=2; i<41; i++) {
+			for(int j=0; j<2; j++) {
+				ff[i][j] = ff[i-1][j] + ff[i-2][j];
 			}
 		}
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		t = Integer.parseInt(br.readLine());
-		
-		for(int i = 0; i < t; i++) {
-			n = Integer.parseInt(br.readLine());
-			count0 = 0;
-			count1 = 0;
-			
-			if(dp[n][1] == -1 && dp[n][2] == -1) {
-				fibonacci(n);
-				dp[n][1] = count0;
-				dp[n][2] = count1;
-			}
-			
-			System.out.println(dp[n][1] + " " + dp[n][2]);
+		for(int i=0; i<num; i++) {
+			int a = sc.nextInt();
+			System.out.println(ff[a][0] + " " + ff[a][1]);
 		}
 	}
 	
-	static int fibonacci(int n) {
-		if(dp[n][0] != -1) {
-			count0 += dp[n][1];
-			count1 += dp[n][2];
-			return dp[n][0];
-		} else {
-			if(n == 0) {
-				count0++;
-				dp[n][0] = 0;
-				return dp[n][0];
-			} else if (n == 1) {
-				count1++;
-				dp[n][0] = 1;
-				return dp[n][0];
-			} else {
-				dp[n][0] = fibonacci(n - 1) + fibonacci(n - 2);
-				return dp[n][0];
-			}
-		}
-	}
+	// 10555118	pp22shj	1003	맞았습니다!!	11524	124	Java / 수정	1804	
 }
